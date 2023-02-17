@@ -2,8 +2,12 @@
 
 using ISellLaptops.Data;
 using ISellLaptops.Models;
+using Microsoft.EntityFrameworkCore;
 
 using LaptopsContext context = new LaptopsContext();
+
+//make the data
+/*
 
 Brand cheese = new()
 {
@@ -121,10 +125,14 @@ context.Laptops.Add(QuantumCheese);
 
 context.SaveChanges();
 
+//*/
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<LaptopsContext>(options => options.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ThereBeLaptops;Integrated Security=True;"));
 
 var app = builder.Build();
 
@@ -145,6 +153,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Laptops}/{action=Index}/{id?}");
 
 app.Run();

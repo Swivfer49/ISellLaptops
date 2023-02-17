@@ -13,5 +13,15 @@ namespace ISellLaptops.Data
         {
             optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=ThereBeLaptops;Integrated Security=True;");
         }
+
+        public LaptopsContext()
+        {
+
+        }
+
+        public LaptopsContext(DbContextOptions contextOptions) : base(contextOptions)
+        {
+
+        }
     }
 }
